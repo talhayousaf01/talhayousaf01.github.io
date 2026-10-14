@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Talha's Online Store</title>
+</head>
+
+<body>
+
+    <script>
+        alert("Welcome to Talha's Online Store!");
+
+        var customerName = prompt("What is your name?");
+        var itemRequested = prompt("What item would you like to order?");
+        var numberOfItems = prompt("How many would you like to order? Enter a number from 1 to 99.");
+
+        var hour = new Date().getHours();
+        var greeting;
+
+        if (hour < 12) {
+            greeting = "Good Morning";
+        }
+        else if (hour < 18) {
+            greeting = "Good Afternoon";
+        }
+        else {
+            greeting = "Good Evening";
+        }
+
+        var orderDate = new Date();
+        var arrivalDate = new Date();
+        arrivalDate.setDate(orderDate.getDate() + 7);
+
+        if (numberOfItems >= 1 && numberOfItems <= 99) {
+            document.write("<h1>" + greeting + " " + customerName + ", Thank You for Ordering!</h1>");
+
+            document.write("<h2>Order Information</h2>");
+
+            document.write("<p>Customer Name: " + customerName + "</p>");
+
+            document.write("<p>Item Requested: " + itemRequested + "</p>");
+
+            document.write("<p>Number of Items: " + numberOfItems + "</p>");
+
+            document.write("<p>Your expected arrival date is: " + arrivalDate.toDateString() + "</p>");
+        }
+        else {
+            document.write("<h2>Invalid order</h2>");
+
+            document.write("<p>Please refresh the page and enter a quantity from 1 to 99.</p>");
+        }
+    </script>
+
+</body>
+
+</html>
