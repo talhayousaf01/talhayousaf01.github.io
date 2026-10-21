@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab 5 - Registration Page</title>
+
+    <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script>
+        function registerUser() {
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var dateOfBirth = document.getElementById("dateOfBirth").value;
+
+            var output = document.getElementById("output");
+
+            if (firstName == "" || lastName == "" || email == "" ||
+                password == "" || dateOfBirth == "") {
+
+                output.style.color = "red";
+                output.innerHTML = "<h3>Registration Failed</h3>" +
+                    "<p>Please fill in all fields.</p>";
+
+            } else if (password.indexOf("!") == -1 &&
+                       password.indexOf("?") == -1) {
+
+                output.style.color = "red";
+                output.innerHTML = "<h3>Registration Failed</h3>" +
+                    "<p>Your password must contain ! or ?</p>";
+
+            } else {
+                var user = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    password: password,
+                    dateOfBirth: dateOfBirth
+                };
+
+                var hiddenPassword = "";
+
+                for (var i = 0; i < user.password.length; i++) {
+                    hiddenPassword = hiddenPassword + "*";
+                }
+
+                user.password = hiddenPassword;
+
+                output.style.color = "green";
+                output.innerHTML = "<h3>Registration Successful!</h3>" +
+                    "<p><b>First Name:</b> " + user.firstName + "</p>" +
+                    "<p><b>Last Name:</b> " + user.lastName + "</p>" +
+                    "<p><b>Email:</b> " + user.email + "</p>" +
+                    "<p><b>Password:</b> " + user.password + "</p>" +
+                    "<p><b>Date of Birth:</b> " + user.dateOfBirth + "</p>";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Talha's Badminton Club Registration</h1>
+        <p>Please register to receive updates about badminton events.</p>
+
+        <hr>
+
+        <div class="form-group">
+            <label>First Name:</label>
+            <input type="text" id="firstName" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Last Name:</label>
+            <input type="text" id="lastName" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Email Address:</label>
+            <input type="email" id="email" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="password" class="form-control">
+            <p>Your password must include ! or ?</p>
+        </div>
+
+        <div class="form-group">
+            <label>Date of Birth:</label>
+            <input type="date" id="dateOfBirth" class="form-control">
+        </div>
+
+        <button class="btn btn-primary" onclick="registerUser();">
+            Register
+        </button>
+
+        <hr>
+
+        <div id="output"></div>
+
+        <hr>
+
+        <p>
+            <a href="index.html">Home</a> |
+            <a href="lab3.html">Lab 3</a> |
+            <a href="lab4.html">Lab 4</a> |
+            <a href="lab5.html">Lab 5</a>
+        </p>
+    </div>
+</body>
+</html>
